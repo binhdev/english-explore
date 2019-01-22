@@ -104,6 +104,21 @@ public class ResourceManager {
         mWelcomeBgTreeTextureAtlas.load();
         mWelcomeBgFlowerTextureAtlas.load();
         mAngleTextureAtlas.load();
+
+        SoundFactory.setAssetBasePath("mfx/");
+        try {
+            mSound = SoundFactory.createSoundFromAsset(mActivity.getEngine().getSoundManager(), mActivity, "game_over.ogg");
+        } catch (final IOException e) {
+            Debug.e(e);
+        }
+
+        MusicFactory.setAssetBasePath("mfx/");
+        try {
+            mMusic = MusicFactory.createMusicFromAsset(mActivity.getEngine().getMusicManager(), mActivity, "music_background.ogg");
+            mMusic.setLooping(true);
+        } catch (final IOException e) {
+            Debug.e(e);
+        }
     }
 
     public void unloadWelcomeResources() {
@@ -117,21 +132,6 @@ public class ResourceManager {
     }
 
     public void loadGameResources() {
-        //TODO implement
-//        SoundFactory.setAssetBasePath("mfx/");
-//        try {
-//            mSound = SoundFactory.createSoundFromAsset(mActivity.getEngine().getSoundManager(), mActivity, "game_over.ogg");
-//        } catch (final IOException e) {
-//            Debug.e(e);
-//        }
-//
-//        MusicFactory.setAssetBasePath("mfx/");
-//        try {
-//            mMusic = MusicFactory.createMusicFromAsset(mActivity.getEngine().getMusicManager(), mActivity, "music_background.ogg");
-//            mMusic.setLooping(true);
-//        } catch (final IOException e) {
-//            Debug.e(e);
-//        }
     }
 
     public void unloadGameResources() {

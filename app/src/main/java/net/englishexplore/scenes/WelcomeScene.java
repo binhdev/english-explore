@@ -1,6 +1,5 @@
 package net.englishexplore.scenes;
 
-import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
@@ -9,7 +8,6 @@ import org.andengine.entity.sprite.AnimatedSprite;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.util.FPSLogger;
 import org.andengine.input.touch.TouchEvent;
-import org.andengine.opengl.util.GLState;
 
 public class WelcomeScene extends BaseScene implements IOnSceneTouchListener {
 
@@ -52,14 +50,14 @@ public class WelcomeScene extends BaseScene implements IOnSceneTouchListener {
         bgFlower.setSize(SCREEN_WIDTH, 261);
         attachChild(bgFlower);
         bgTree.setZIndex(3);
-
-        final float birdX = 169;
-        final float birdY = 169;
+        final float birdX = 320;
+        final float birdY = 320;
 
         mAngel = new AnimatedSprite(birdX, birdY, mResourceManager.mAngleTextureRegion, mVertexBufferObjectManager);
         mAngel.setPosition(500, SCREEN_HEIGHT - 500);
         mAngel.setZIndex(10);
-        mAngel.animate(30);
+        mAngel.setSize(320, 320);
+        mAngel.animate(100);
 
         attachChild(mAngel);
 
@@ -75,6 +73,10 @@ public class WelcomeScene extends BaseScene implements IOnSceneTouchListener {
                 //TODO implement
             }
         });
+
+        if(!mResourceManager.mMusic.isPlaying()){
+            mResourceManager.mMusic.play();
+        }
     }
 
     @Override
